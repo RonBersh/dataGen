@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue-nginx
+  template:
+    metadata:
+      labels:
+        app: vue-nginx
+    spec:
+      containers:
+      - args: ['nginx', '-g', 'daemon off;']
+        # last version in production : new_routing-v1.1
+        image: gcr.io/decisive-engine-206913/vue-nginx:move2influence-v1.1
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 80
+      restartPolicy: Always

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-nginx-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue-nginx-staging
+  template:
+    metadata:
+      labels:
+        app: vue-nginx-staging
+    spec:
+      containers:
+      - args: ['nginx', '-g', 'daemon off;']
+        ## last version : signUp_processv0.24
+        image: gcr.io/decisive-engine-206913/vue-nginx-st:move2influence-v1.0
+        imagePullPolicy: Always
+        name: nginx
+        env:
+        - name: NODE_ENV
+          value: staging
+        - name: VUE_APP_BASE_URL_NODE
+          value: https://ninjainfluence.com/node-influencers
+        ports:
+        - containerPort: 80
+        # - containerPort: 8000
+      restartPolicy: Always

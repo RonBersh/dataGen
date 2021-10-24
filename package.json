@@ -1,0 +1,63 @@
+{
+  "name": "simple-vue-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build-production": "vue-cli-service build --mode production",
+    "build-staging": "vue-cli-service build --mode staging"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "cors": "^2.8.5",
+    "es6-promise": "^4.2.8",
+    "express": "^4.17.1",
+    "gh-pages": "^1.2.0",
+    "vue": "^2.5.16",
+    "vue-axios": "^3.2.4",
+    "vue-cookies": "^1.7.4",
+    "vue-loaders": "^4.1.4",
+    "vue-multiselect": "^2.1.6",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-rc.10",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
+    "@vue/cli-plugin-unit-mocha": "^3.0.0-rc.10",
+    "@vue/cli-service": "^3.0.0-rc.10",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "chai": "^4.1.2",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
