@@ -145,7 +145,7 @@ section.menu {
   width: 200px;
   display: flex;
   align-items: flex-end;
-  background: url(../assets/LogoNew.svg);
+  background: url(../assets/LogoBlack.png);
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 15px;
