@@ -1,1 +1,0 @@
-kubectl create secret tls secret-influencer-ninja --cert origin_certificate.pem --key private_key.key

@@ -1,118 +1,46 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Profile from './views/Profile.vue';
-import LandingPage from './views/LandingPage.vue';
-import SignUpPage from './views/SignUp.vue';
-import Confirmation from './views/Confirmation.vue';
-import Password from './views/Password.vue';
-import Login from './views/Login.vue';
-import page404 from './views/page404.vue';
-import Healthz from './views/Healthz.vue';
-import ResetPassword from './views/ResetPassword.vue';
 
-import store from "./store/store";
-import e from 'cors';
+
+
+import Cart from './views/Cart.vue';
+import CartItem from './views/CartItem.vue';
+
 
 
 Vue.use(Router)
 
 
-// const ifNotAuthenticated = (to, from, next) => {
-//   if (!store.getters.isAuthenticated) {
-//     next();
-//     return;
-//   }
-//   next("/");
-// };
-
-// const ifAuthenticated = (to, from, next) => {
-//   let res=store.getters.isAuthenticated;
-//   console.log(res,'isAuthenticated');
-//   if (store.getters.isAuthenticated) {
-//    next ();
-//     return;
-//   }
-//   else{
-//    next({ name: 'Login' });
-
-//   }
- 
-// };
 
 
 
 const router = new Router({
   mode: 'history',
-  base: '/influencers/',
+  base: '/',
   routes: [
     {
-      path: '*',
-      name: 'page404',
-      component: page404
-    },
-    
-    {
       path: '/',
-      name: 'LandingPage',
-      component: LandingPage
-    },
-    
-    {
-      path: '/profile',
-      name: 'profile',
-      component: Profile,
-       meta: {
-            authGuard: true
-        }
-     
+      name: 'Cart',
+      component: Cart,
     },
     {
-      path: '/landing-page',
-      name: 'LandingPage',
-      component: LandingPage
+      path: '/cart',
+      name: 'Cart',
+      component: Cart,
     },
-    {
-      path: '/sign-up',
-      name: 'SignUpPage',
-      component: SignUpPage
-    },
-    {
-      path: '/confirmation',
-      name: 'Confirmation',
-      component: Confirmation
-    },
-    {
-      path: '/add-password',
-      name: 'Password',
-      component: Password
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
 
-    },
     {
-      path: '/reset-password',
-      name: 'ResetPassword',
-      component: ResetPassword
+      path: '/cart/item',
+      name: 'CartItem',
+      component: CartItem,
+      props: true,
+    },
 
-    },
-    {
-      path: '/check/healthz',
-      name: 'Healthz',
-      component: Healthz
-    }
+
   ]
 })
 
 
-router.beforeEach((to, from, next) => {
-  const loggedUser = !!$cookies.get('user_name') && $cookies.get('user_token');
 
-  if (to.matched.some(m => m.meta.authGuard) && !loggedUser)
-      next({ name: "Login" });
-  else next();
-});
 
 export default router
